@@ -1,0 +1,17 @@
+#!/bin/bash
+
+CONECTADOS=0
+
+for (( i = 1; i <= $(bluetoothctl devices | wc | awk '{print $1}'); i++ )); do
+  if [[ $(bluetoothctl info $(bluetoothctl devices | awk -v i="$i" 'FNR == i {print $2}') | grep "Connected: yes" -c) -eq 1 ]]; then
+    ((CONECTADOS++))
+  fi
+done
+
+if [[ $CONECTADOS -eq 0 ]]; then
+  bluetoothctl power off
+  notify-send "Desligando bluetooth"
+
+else
+  echo "Dispositivo Conectado"
+fi
