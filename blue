@@ -17,12 +17,16 @@ if [ $(bluetoothctl show | grep "Powered: yes" -c) -eq 1 ]; then
   if [[ $CONECTADOS -eq 0 ]]; then
     bluetoothctl power off
     /usr/bin/notify-send "Desligando bluetooth"
-  else
-    echo "Dispositivo Conectado:"
+  else if [[ $CONECTADOS -gt 1 ]]; then
+    echo "Dispositivos Conectados:"
     for element in "${ARRAY[@]}"
     do
       bluetoothctl info $(bluetoothctl devices | awk -v i="$element" 'FNR == i {print $2}') | grep "Name" | awk '{printf("\t%2s %3s\n", $2, $3)}'
     done
+    else
+      echo "Dispositivo Conectado:"
+      bluetoothctl info $(bluetoothctl devices | awk -v i="${ARRAY[0]}" 'FNR == i {print $2}') | grep "Name" | awk '{printf("\t%2s %3s\n", $2, $3)}'
+    fi
   fi
 
 else
