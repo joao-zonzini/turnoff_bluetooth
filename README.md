@@ -6,8 +6,7 @@ Se você quiser colocar no crontab, eu sugiro colocar o scrpit no `/bin` e rodar
 */5 * * * * blue
 ```
 
-Eu tenho quase certeza que nem toda distro ou driver usa esse tal de ``bluetoothctl``, eu achei ele na minha e é ele que eu tô usando.
-O que eu tenho certeza é que é possível adaptar esse meu script para que funcione com qualquer gerenciador de bluetooth.
+Nesse shell é usado o "gerenciador de bluetooth" `bluetoothctl`
 
 ## Walk-through:
 ``` bash 
