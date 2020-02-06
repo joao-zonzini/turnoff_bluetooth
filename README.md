@@ -1,6 +1,6 @@
 # turnoff_bluetooth
 Script de bash do Linux para quando eu esqueço de desligar o Bluetooth
-Se você quiser colocar no crontab, eu sugiro colocar o scrpit no `/bin` e rodar a cada 5 minutos assim:
+Se você quiser colocar no crontab, eu sugiro colocar o scrpit no `~/bin` e rodar a cada 5 minutos assim:
 ```
 # m h dom mon dow command
 */5 * * * * blue
